@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>打开 PiliPlus</title>
+<style>
+body{font-family:-apple-system,sans-serif;background:#15181c;color:#e6e6e6;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center}
+a{display:inline-block;margin:8px;padding:12px 20px;border-radius:10px;background:#fb7299;color:#fff;text-decoration:none}
+a.web{background:#333}
+p{opacity:.7}
+</style>
+</head>
+<body>
+<div id="box"><p>正在跳转…</p></div>
+<script>
+(function(){
+  var q = new URLSearchParams(location.search);
+  var bv = q.get('bv') || location.hash.slice(1);
+  var box = document.getElementById('box');
+  // 只接受合法 BV 号，避免被当成任意跳转
+  if (!/^BV[0-9A-Za-z]{10}$/.test(bv || '')) {
+    box.innerHTML = '<p>用法：?bv=BV号</p>';
+    return;
+  }
+  var app = 'bilibili://video/' + bv;
+  var web = 'https://www.bilibili.com/video/' + bv;
+  box.innerHTML = '<p>' + bv + '</p><a href="' + app + '">在 PiliPlus 打开</a><a class="web" href="' + web + '">网页打开</a>';
+  location.href = app;
+})();
+</script>
+</body>
+</html>
