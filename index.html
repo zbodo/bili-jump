@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
 <title>打开 PiliPlus</title>
 <style>
 body{font-family:-apple-system,sans-serif;background:#15181c;color:#e6e6e6;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;text-align:center}
@@ -26,7 +27,7 @@ p{opacity:.7}
   }
   var app = 'bilibili://video/' + bv;
   var web = 'https://www.bilibili.com/video/' + bv;
-  box.innerHTML = '<p>' + bv + '</p><a href="' + app + '">在 PiliPlus 打开</a><a class="web" href="' + web + '">网页打开</a>';
+  box.innerHTML = '<p>' + bv + '</p><a href="' + app + '">在 PiliPlus 打开</a><a class="web" rel="noreferrer" href="' + web + '">网页打开</a>';
   location.href = app;
 })();
 </script>
